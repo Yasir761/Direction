@@ -1,0 +1,16 @@
+{
+  "name": "direction",
+  "version": "1.0.0",
+  "description": "Backend for Direction ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Direction",
+    "JavaScript",
+    "MERN"
+  ],
+  "author": "\"Mohammad Yasir\"",
+  "license": "ISC"
+}
