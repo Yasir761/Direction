@@ -2,12 +2,13 @@ import mongoose, {Schema} from'mongoose';
 
 const userProfileSchema = new Schema({
     bio: {
-
+        type: String,
+        required: true,
     },
     role:{
         type: String,
         required: true,
-        default: "Learner",
+        default: "Student",
         enum: ["Student", "Professional"],
         required: true,
     },
@@ -19,6 +20,15 @@ const userProfileSchema = new Schema({
     coverImage: {
         type: String, // cloudinary url
         
-    }
+    },
+    socialMedia: {
+        type: [{
+            type: String,
+            required: true,
+            enum: ["facebook", "twitter", "instagram", "linkedin", "github"],
+        }],
+        required: true,
+    },
+    
 },
     {timestamps: true});
