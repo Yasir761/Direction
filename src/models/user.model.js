@@ -15,6 +15,7 @@ const userSchema = new Schema({
         lowercase: true,
         trim: true, 
         unique: true,
+        index: true
         
     },
     fullname: {
@@ -24,9 +25,22 @@ const userSchema = new Schema({
          index: true   
     },
     password: {
-        type: String, // use encrypt
+        type: String, // use bcrypt
         required: true,
-    }
+    },
+      // Optional fields with validation
+      country: {
+        type: String,
+        trim: true,
+        index: true
+      },
+      phone: {
+        type: String,
+        trim: true,
+        match: /^[+]\d{2,3}[-\s]?\d{3}[-\s]?\d{4}[-\s]?\d{3,4}$/, // RegEx for valid phone numbers
+        index: true
+      },
+
 
     
 },
