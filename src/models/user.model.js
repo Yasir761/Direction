@@ -3,7 +3,7 @@ import mongoose, { Schema } from'mongoose';
 const userSchema = new Schema({
     username: {
         type: String,
-        required: true,
+        required: [true, 'Username is required'],
         lowercase: true,
         trim: true, 
         unique: true,
@@ -11,7 +11,7 @@ const userSchema = new Schema({
     },
     email: {
         type: String,
-        required: true,
+        required: [true, 'Email is required'],
         lowercase: true,
         trim: true, 
         unique: true,
@@ -20,13 +20,16 @@ const userSchema = new Schema({
     },
     fullname: {
         type: String,
-        required: true,
+        required: [true, 'Fullname is required'],
         trim: true,
          index: true   
     },
     password: {
         type: String, // use bcrypt
-        required: true,
+        required: [true, 'Password is required'],
+    },
+    refreshToken: {
+      type : String,
     },
       // Optional fields with validation
       country: {
