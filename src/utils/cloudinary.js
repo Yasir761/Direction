@@ -8,11 +8,11 @@ cloudinary.config({
 });
 
 
-const upload = async (path)=>{
+const uploadOnCloudinary = async (localFilePath)=>{
 
   try{
-    if(!path) return null;
-    const response = await Cloudinary.uploader.upload(path,{
+    if(!localFilePath) return null;
+    const response = await Cloudinary.uploader.upload(localFilePath,{
       resource_type: "auto"
     });
     // file has been uploaded 
@@ -21,10 +21,10 @@ const upload = async (path)=>{
     return response;
 
   }catch(error){
-    fs.unlinkSync(path);  // remove the file from the system
+    fs.unlinkSync(localFilePath);  // remove the file from the system
 
     return null;
   }
 }
 
-export {upload};
+export {uploadOnCloudinary};
