@@ -14,17 +14,19 @@ const registerUser = asyncHandler( async(req,res)=>{
     // check for user creation
     // return response
 
-     const {fullname, username, email, password, country, phone}= req.body
+     const {fullname, username, email, password}= req.body
      console.log("fullname: ",fullname);
      console.log("password: ",password);
+     console.log("email: ",email);
+     console.log("username: ",username);
      if(
-        [fullname, username, email, password, country].some((field)=>
-        field?.trim()==="")
+        [fullname, username, email, password].some((field)=>
+        field?.trim() === "")
      ) {
         throw new ApiError("All fields are required", 400);
      }
 
-     const existedUser = User.findOne({
+     const existedUser = await User.findOne({
         $or:[{username},{email}]
      })
      if(existedUser) {
@@ -50,9 +52,7 @@ const registerUser = asyncHandler( async(req,res)=>{
         username:username.toLowerCase(),
         email,
         password,
-        phone:phone || "",
-        country:country || "",
-        avatar:avatar?.url || "",
+        avatar:avatar.url,
         cover:cover?.url || ""
     })
 
@@ -67,6 +67,6 @@ const registerUser = asyncHandler( async(req,res)=>{
         return res.status(201).json(
             new ApiResponse(201, createdUser, "User registered successfully"));
 })
-
+ 
 
 export {registerUser};

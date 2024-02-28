@@ -59,12 +59,6 @@ const userProfileSchema = new Schema({
       required: true
     }
   }],
-  avatar: {
-    type: String, // Cloudinary URL for avatar image (optional)
-  },
-  coverImage: {
-    type: String, // Cloudinary URL for cover image (optional)
-  },
   dateOfBirth: {
     type: Date,
     required: true

@@ -29,6 +29,13 @@ const userSchema = new Schema({
         type: String, // use bcrypt
         required: [true, 'Password is required'],
     },
+    avatar: {
+      type: String,
+      required:true               // Cloudinary URL for avatar image (optional)
+    },
+    cover: {
+      type: String, // Cloudinary URL for cover image (optional)
+    },
     refreshToken: {
       type : String,
     },
