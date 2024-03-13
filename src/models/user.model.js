@@ -39,6 +39,7 @@ const userSchema = new Schema({
     refreshToken: {
       type : String,
     },
+    
       // Optional fields with validation
       country: {
         type: String,
